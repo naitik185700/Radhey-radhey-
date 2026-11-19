@@ -10,6 +10,8 @@ async function main() {
     { key: 'whatsapp_number', value: '918950729243' },
     { key: 'store_address', value: 'Near Sach Jewellers, Pul Teliyan, Hisar, Haryana' },
     { key: 'announcement_bar', value: 'Free Shipping on Orders Above ₹999 | Easy 7-Day Returns | WhatsApp Orders: +91 89507 29243' },
+    { key: 'instagram_handle', value: '@radhey_radhey_girls_point' },
+    { key: 'instagram_url', value: 'https://www.instagram.com/radhey_radhey_girls_point/' },
   ];
 
   for (const s of settingsToUpdate) {

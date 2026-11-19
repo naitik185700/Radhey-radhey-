@@ -76,19 +76,20 @@ export default function Footer() {
             </p>
             <div className="flex items-center gap-3 pt-2">
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/radhey_radhey_girls_point/"
                 target="_blank"
-                rel="noreferrer"
-                className="w-8 h-8 rounded-full bg-neutral-800 hover:bg-white hover:text-black flex items-center justify-center text-neutral-300 transition-colors"
-                aria-label="Instagram"
+                rel="noopener noreferrer"
+                className="w-8 h-8 rounded-full bg-neutral-800 hover:bg-[#E1306C] hover:text-white flex items-center justify-center text-neutral-300 transition-colors"
+                aria-label="Instagram @radhey_radhey_girls_point"
+                title="Follow @radhey_radhey_girls_point on Instagram"
               >
                 <Instagram className="w-4 h-4" />
               </a>
               <a
-                href="https://facebook.com"
+                href="https://www.instagram.com/radhey_radhey_girls_point/"
                 target="_blank"
-                rel="noreferrer"
-                className="w-8 h-8 rounded-full bg-neutral-800 hover:bg-white hover:text-black flex items-center justify-center text-neutral-300 transition-colors"
+                rel="noopener noreferrer"
+                className="w-8 h-8 rounded-full bg-neutral-800 hover:bg-[#1877F2] hover:text-white flex items-center justify-center text-neutral-300 transition-colors"
                 aria-label="Facebook"
               >
                 <Facebook className="w-4 h-4" />

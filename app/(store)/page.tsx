@@ -244,54 +244,96 @@ export default async function HomePage() {
           <h2 className="font-serif text-2xl sm:text-3xl font-bold text-neutral-900 mt-1 uppercase">
             Follow Our Festive Journey
           </h2>
-          <p className="text-xs text-neutral-500 mt-1">Tag @radheygirlspoint on Instagram to be featured</p>
+          <p className="text-xs text-neutral-500 mt-1">
+            Follow{' '}
+            <a
+              href="https://www.instagram.com/radhey_radhey_girls_point/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-bold text-neutral-900 hover:text-[#E1306C] underline transition-colors"
+            >
+              @radhey_radhey_girls_point
+            </a>{' '}
+            on Instagram for daily new arrivals & lookbooks
+          </p>
+          <div className="mt-3">
+            <a
+              href="https://www.instagram.com/radhey_radhey_girls_point/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-[#833AB4] via-[#FD1D1D] to-[#F77737] text-white text-xs font-semibold shadow-md hover:opacity-95 transition-all"
+            >
+              <span>Follow On Instagram</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </a>
+          </div>
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
-          <div className="relative aspect-square rounded-lg overflow-hidden group">
+          <a
+            href="https://www.instagram.com/radhey_radhey_girls_point/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="relative aspect-square rounded-lg overflow-hidden group block"
+          >
             <Image
-              src="/brand/product-black-suit.png"
-              alt="Customer look"
+              src="/campaign/party-wear.jpg"
+              alt="Radhey Radhey Girls Point Instagram Look"
               fill
               className="object-cover group-hover:scale-105 transition-transform duration-500"
             />
             <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-medium">
-              View Style &rarr;
+              View on Instagram &rarr;
             </div>
-          </div>
-          <div className="relative aspect-square rounded-lg overflow-hidden group">
+          </a>
+          <a
+            href="https://www.instagram.com/radhey_radhey_girls_point/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="relative aspect-square rounded-lg overflow-hidden group block"
+          >
             <Image
-              src="/brand/product-pink-kurti.png"
-              alt="Customer look"
+              src="/campaign/daily-wear.jpg"
+              alt="Radhey Radhey Girls Point Instagram Look"
               fill
               className="object-cover group-hover:scale-105 transition-transform duration-500"
             />
             <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-medium">
-              View Style &rarr;
+              View on Instagram &rarr;
             </div>
-          </div>
-          <div className="relative aspect-square rounded-lg overflow-hidden group">
+          </a>
+          <a
+            href="https://www.instagram.com/radhey_radhey_girls_point/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="relative aspect-square rounded-lg overflow-hidden group block"
+          >
             <Image
-              src="/brand/product-lavender-suit.png"
-              alt="Customer look"
+              src="/campaign/kurti-collection.jpg"
+              alt="Radhey Radhey Girls Point Instagram Look"
               fill
               className="object-cover group-hover:scale-105 transition-transform duration-500"
             />
             <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-medium">
-              View Style &rarr;
+              View on Instagram &rarr;
             </div>
-          </div>
-          <div className="relative aspect-square rounded-lg overflow-hidden group">
+          </a>
+          <a
+            href="https://www.instagram.com/radhey_radhey_girls_point/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="relative aspect-square rounded-lg overflow-hidden group block"
+          >
             <Image
-              src="/brand/product-cream-coord.png"
-              alt="Customer look"
+              src="/campaign/coord-sets.jpg"
+              alt="Radhey Radhey Girls Point Instagram Look"
               fill
               className="object-cover group-hover:scale-105 transition-transform duration-500"
             />
             <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-medium">
-              View Style &rarr;
+              View on Instagram &rarr;
             </div>
-          </div>
+          </a>
         </div>
       </section>
     </div>
