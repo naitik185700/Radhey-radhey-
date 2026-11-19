@@ -1,12 +1,16 @@
 #!/bin/bash
 set -e
 
-echo "=== RADHEY RADHEY GIRLS POINT - AUTOMATED VPS DEPLOYMENT ==="
-echo "Target VPS: 187.127.188.22"
+DOMAIN="rr.guardianslegalsolutions.com"
+IP="187.127.188.22"
+
+echo "=== RADHEY RADHEY GIRLS POINT - VPS DEPLOYMENT ==="
+echo "Target Domain: $DOMAIN"
+echo "Target Server IP: $IP"
 
 # 1. Update OS Packages
 sudo apt-get update && sudo apt-get upgrade -y
-sudo apt-get install -y curl git ufw nginx
+sudo apt-get install -y curl git ufw nginx certbot python3-certbot-nginx
 
 # 2. Install Node.js 20 LTS
 if ! command -v node &> /dev/null; then
@@ -36,7 +40,17 @@ fi
 
 cd $APP_DIR
 
-# 5. Install dependencies and build Next.js
+# 5. Environment configuration
+cat << 'EOF' > .env.production
+NODE_ENV=production
+PORT=3000
+DATABASE_URL="file:./prisma/dev.db"
+NEXTAUTH_SECRET="radhey_radhey_super_secret_jwt_key_2026_boutique"
+NEXTAUTH_URL="https://rr.guardianslegalsolutions.com"
+NEXT_PUBLIC_APP_URL="https://rr.guardianslegalsolutions.com"
+EOF
+
+# 6. Install dependencies and build Next.js
 echo "Installing npm dependencies..."
 npm ci
 
@@ -50,29 +64,29 @@ node prisma/update-address.js || true
 echo "Building Next.js production build..."
 npm run build
 
-# 6. Setup PM2 Daemon
+# 7. Setup PM2 Daemon
 echo "Starting app via PM2..."
 pm2 delete radhey-radhey || true
 pm2 start npm --name "radhey-radhey" -- start -- -p 3000
 pm2 save
 sudo env PATH=$PATH:/usr/bin pm2 startup systemd -u $USER --hp $HOME || true
 
-# 7. Configure Nginx Reverse Proxy
-echo "Configuring Nginx on port 80..."
-sudo tee /etc/nginx/sites-available/radhey-radhey > /dev/null << 'EOF'
+# 8. Configure Nginx Reverse Proxy for Domain
+echo "Configuring Nginx for $DOMAIN and $IP..."
+sudo tee /etc/nginx/sites-available/radhey-radhey > /dev/null << EOF
 server {
     listen 80;
-    server_name 187.127.188.22;
+    server_name $DOMAIN $IP;
 
     location / {
         proxy_pass http://127.0.0.1:3000;
         proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Upgrade \$http_upgrade;
         proxy_set_header Connection 'upgrade';
-        proxy_set_header Host $host;
-        proxy_cache_bypass $http_upgrade;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header Host \$host;
+        proxy_cache_bypass \$http_upgrade;
+        proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto \$scheme;
     }
 }
 EOF
@@ -82,11 +96,16 @@ sudo rm -f /etc/nginx/sites-enabled/default
 sudo nginx -t
 sudo systemctl restart nginx
 
-# 8. Configure UFW Firewall
+# 9. Configure UFW Firewall
 sudo ufw allow OpenSSH
 sudo ufw allow 'Nginx Full'
 sudo ufw --force enable
 
+# 10. Automatically obtain Let's Encrypt SSL if DNS has propagated
+echo "Attempting SSL Certificate generation for $DOMAIN..."
+sudo certbot --nginx -d $DOMAIN --non-interactive --agree-tos -m contact@guardianslegalsolutions.com --redirect || echo "Note: If DNS A-record has not propagated yet, run 'sudo certbot --nginx -d $DOMAIN' after DNS is active."
+
 echo "=== DEPLOYMENT COMPLETE! ==="
-echo "Access your live store at: http://187.127.188.22"
-echo "Admin Dashboard: http://187.127.188.22/admin"
+echo "Access your live store at: https://$DOMAIN"
+echo "Direct Server IP: http://$IP"
+echo "Admin Dashboard: https://$DOMAIN/admin"

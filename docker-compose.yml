@@ -13,8 +13,8 @@ services:
       - NODE_ENV=production
       - DATABASE_URL=file:/app/prisma/dev.db
       - NEXTAUTH_SECRET=radhey_radhey_super_secret_jwt_key_2026_boutique
-      - NEXTAUTH_URL=http://187.127.188.22
-      - NEXT_PUBLIC_APP_URL=http://187.127.188.22
+      - NEXTAUTH_URL=https://rr.guardianslegalsolutions.com
+      - NEXT_PUBLIC_APP_URL=https://rr.guardianslegalsolutions.com
     volumes:
       - ./prisma:/app/prisma
       - ./public/campaign:/app/public/campaign
