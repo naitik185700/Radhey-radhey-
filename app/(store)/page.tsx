@@ -96,12 +96,12 @@ export default async function HomePage() {
       {/* 4. Luxury Brand Spotlight Banner */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative rounded-2xl overflow-hidden bg-brand-dark text-white p-8 sm:p-12 lg:p-16 shadow-elevated">
-          <div className="absolute inset-0 opacity-20">
+          <div className="absolute inset-0 opacity-40">
             <Image
-              src="/brand/hero-banner-source.png"
-              alt="Artisanal Texture"
+              src="/campaign/promo-banner.jpg"
+              alt="Radhey Radhey Girls Point Campaign"
               fill
-              className="object-cover"
+              className="object-cover object-right"
             />
           </div>
 
