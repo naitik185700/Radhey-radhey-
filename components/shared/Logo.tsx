@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 interface LogoProps {
   variant?: 'light' | 'dark' | 'extracted';
-  size?: 'sm' | 'md' | 'lg' | 'hero';
+  size?: 'sm' | 'md' | 'lg' | 'hero' | 'header';
   showTagline?: boolean;
   className?: string;
   href?: string;
@@ -20,13 +20,38 @@ export default function Logo({
   const isDarkBg = variant === 'light'; // Text/emblem should be light if on dark background
   const logoSrc = isDarkBg ? '/brand/logo-light.png' : '/brand/logo.png';
 
-  // Size configurations
+  // Dedicated responsive header size
+  if (size === 'header') {
+    const headerContent = (
+      <div className={`relative flex items-center justify-center select-none ${className}`}>
+        <div className="relative w-32 sm:w-40 md:w-44 h-11 sm:h-13 md:h-14">
+          <Image
+            src={logoSrc}
+            alt="Radhey Radhey Girls Point"
+            fill
+            priority
+            className="object-contain object-center"
+            sizes="(max-width: 640px) 130px, 180px"
+          />
+        </div>
+      </div>
+    );
+
+    if (!href) return headerContent;
+    return (
+      <Link href={href} className="inline-flex items-center hover:opacity-90 transition-opacity">
+        {headerContent}
+      </Link>
+    );
+  }
+
+  // Size configurations for footer, cards, hero, and admin
   const dimensions = {
-    sm: { width: 140, height: 70 },
-    md: { width: 190, height: 95 },
-    lg: { width: 240, height: 120 },
-    hero: { width: 320, height: 160 },
-  }[size];
+    sm: { width: 120, height: 60 },
+    md: { width: 160, height: 80 },
+    lg: { width: 220, height: 110 },
+    hero: { width: 300, height: 150 },
+  }[size as 'sm' | 'md' | 'lg' | 'hero'] || { width: 160, height: 80 };
 
   const content = (
     <div className={`flex flex-col items-center justify-center text-center select-none ${className}`}>
