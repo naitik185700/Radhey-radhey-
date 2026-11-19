@@ -15,6 +15,7 @@ interface Banner {
   imageUrl: string;
 }
 
+// 16:9 widescreen campaign banners specifically shot and framed for full-bleed hero presentation
 const fallbackBanners: Banner[] = [
   {
     id: 'hero-1',
@@ -36,21 +37,12 @@ const fallbackBanners: Banner[] = [
   },
   {
     id: 'hero-3',
-    title: 'ROYAL ANARKALI & FESTIVE WEAR',
-    subtitle: 'Intricate Zardozi & Resham Embroidery on Pure Heritage Silk',
-    badge: 'Festive Spotlight',
-    ctaText: 'Explore Anarkalis',
-    ctaLink: '/category/suits?subcategory=anarkali-suits',
-    imageUrl: '/campaign/anarkali-suits.jpg',
-  },
-  {
-    id: 'hero-4',
-    title: 'MIDNIGHT PARTY WEAR SUITS',
-    subtitle: 'Regal Black & Silver Zardozi Salwar Suits for Grand Occasions',
-    badge: 'Evening Exclusive',
-    ctaText: 'Shop Party Wear',
-    ctaLink: '/category/suits',
-    imageUrl: '/campaign/party-wear.jpg',
+    title: 'THE JAIPUR HERITAGE CRAFT',
+    subtitle: 'Pure Modal Satin, Fine Chanderi Silks & Hand Block Prints',
+    badge: 'Artisanal Edit',
+    ctaText: 'Discover Collection',
+    ctaLink: '/shop',
+    imageUrl: '/campaign/promo-banner.jpg',
   },
 ];
 
@@ -64,8 +56,14 @@ export default function HeroSlider() {
         const res = await fetch('/api/banners');
         if (res.ok) {
           const data = await res.json();
+          // Filter to landscape campaign banners suited for hero view
           if (data.banners && data.banners.length > 0) {
-            setBanners(data.banners);
+            const landscapeOnly = data.banners.filter((b: Banner) =>
+              b.imageUrl.includes('banner') || b.imageUrl.includes('hero') || b.imageUrl.includes('promo')
+            );
+            if (landscapeOnly.length > 0) {
+              setBanners(landscapeOnly);
+            }
           }
         }
       } catch (err) {
@@ -87,41 +85,41 @@ export default function HeroSlider() {
 
   return (
     <section
-      className="relative w-full h-[380px] sm:h-[440px] md:h-[480px] lg:h-[500px] xl:h-[520px] overflow-hidden select-none bg-neutral-900"
+      className="relative w-full h-[440px] sm:h-[480px] md:h-[520px] lg:h-[560px] xl:h-[580px] max-h-[85vh] overflow-hidden select-none bg-neutral-900"
       aria-label="Hero Fashion Banner"
     >
-      {/* 1. Still Full-Bleed Background Campaign Image */}
+      {/* 1. Full Still Background Image (Pinned to TOP so models' heads/faces are never cut off) */}
       <div className="absolute inset-0">
         <Image
           src={currentBanner.imageUrl}
           alt={currentBanner.title}
           fill
           priority
-          className="object-cover object-right sm:object-center"
+          className="object-cover object-top sm:object-[75%_top] lg:object-[82%_top] transition-all duration-500"
           sizes="100vw"
-          quality={90}
+          quality={95}
         />
 
-        {/* Cinematic Vignette & Left Gradient Overlay for crisp typography readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/55 to-black/10 sm:from-black/80 sm:via-black/40 sm:to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20" />
+        {/* Subtle, soft gradient scrim on the left: text is clear, model on right is 100% visible & unobstructed */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/50 to-transparent sm:from-black/80 sm:via-black/35 sm:to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/15" />
       </div>
 
-      {/* 2. Overlaid Campaign Editorial Content (Perfect Viewport Fit - No Scrolling Needed) */}
+      {/* 2. Overlaid Campaign Editorial Content (Vertically centered, fully visible) */}
       <div className="relative z-20 h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
-        <div className="max-w-md sm:max-w-lg lg:max-w-xl space-y-3 sm:space-y-4 text-left py-4">
+        <div className="max-w-md sm:max-w-lg lg:max-w-xl space-y-3 sm:space-y-4 text-left py-6">
           {/* Campaign Badge */}
           {currentBanner.badge && (
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 backdrop-blur-md border border-white/20 text-white">
-              <Sparkles className="w-3 h-3 text-amber-300" />
+              <Sparkles className="w-3.5 h-3.5 text-amber-300" />
               <span className="font-serif italic text-[11px] sm:text-xs tracking-widest uppercase font-medium">
                 {currentBanner.badge}
               </span>
             </div>
           )}
 
-          {/* Main Hero Headline - Clean 2-Line Editorial Size */}
-          <h1 className="font-serif text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-tight uppercase drop-shadow-md">
+          {/* Main Hero Headline */}
+          <h1 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-tight uppercase drop-shadow-md">
             {currentBanner.title}
           </h1>
 
@@ -132,7 +130,7 @@ export default function HeroSlider() {
             </p>
           )}
 
-          {/* Action CTA Buttons (Always fully visible above the fold) */}
+          {/* Action CTA Buttons */}
           <div className="pt-2 flex flex-wrap items-center gap-3">
             <Link
               href={currentBanner.ctaLink}
@@ -152,7 +150,7 @@ export default function HeroSlider() {
         </div>
       </div>
 
-      {/* 3. Manual Slide Navigation (Still by default; no automatic jumping) */}
+      {/* 3. Manual Slide Navigation (Arrows & Dots) */}
       {banners.length > 1 && (
         <>
           <button
@@ -171,7 +169,7 @@ export default function HeroSlider() {
             <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
           </button>
 
-          {/* Discreet Bottom Dots Indicator */}
+          {/* Indicator Dots */}
           <div className="absolute bottom-3 sm:bottom-4 left-1/2 -translate-x-1/2 z-30 flex items-center gap-2 bg-black/30 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10">
             {banners.map((_, idx) => (
               <button
