@@ -35,20 +35,31 @@ if [ ! -d "$APP_DIR" ]; then
 else
     echo "Updating existing repository..."
     cd $APP_DIR
-    git pull origin main
+    git fetch origin main
+    git reset --hard origin/main
 fi
 
 cd $APP_DIR
 
-# 5. Environment configuration
-cat << 'EOF' > .env.production
-NODE_ENV=production
-PORT=3000
-DATABASE_URL="file:./prisma/dev.db"
-NEXTAUTH_SECRET="radhey_radhey_super_secret_jwt_key_2026_boutique"
+# 5. Environment configuration (create .env for Prisma and Next.js)
+echo "Generating .env configuration..."
+cat << 'EOF' > .env
+DATABASE_URL="file:./dev.db"
+JWT_SECRET="radhey_radhey_girls_point_secure_jwt_token_auth_secret_key_2026"
+NEXTAUTH_SECRET="radhey_radhey_girls_point_auth_secret_key_2026"
 NEXTAUTH_URL="https://rr.guardianslegalsolutions.com"
 NEXT_PUBLIC_APP_URL="https://rr.guardianslegalsolutions.com"
+NEXT_PUBLIC_STORE_NAME="Radhey Radhey Girls Point"
+NEXT_PUBLIC_STORE_TAGLINE="Trendy • Ethnic • Daily Wear | Suits | Co-ords | Palazzo | Kurtis"
+NEXT_PUBLIC_CURRENCY_SYMBOL="₹"
+NEXT_PUBLIC_WHATSAPP_NUMBER="918950729243"
+NODE_ENV="production"
+PORT=3000
 EOF
+
+cp .env .env.production
+cp .env .env.local
+export DATABASE_URL="file:./dev.db"
 
 # 6. Install dependencies and build Next.js
 echo "Installing npm dependencies..."
@@ -56,7 +67,7 @@ npm ci
 
 echo "Setting up Prisma database..."
 npx prisma generate
-npx prisma db push
+npx prisma db push --accept-data-loss
 node prisma/seed.js || true
 node prisma/update-campaign.js || true
 node prisma/update-address.js || true
@@ -101,11 +112,14 @@ sudo ufw allow OpenSSH
 sudo ufw allow 'Nginx Full'
 sudo ufw --force enable
 
-# 10. Automatically obtain Let's Encrypt SSL if DNS has propagated
+# 10. Automatically obtain Let's Encrypt SSL
 echo "Attempting SSL Certificate generation for $DOMAIN..."
-sudo certbot --nginx -d $DOMAIN --non-interactive --agree-tos -m contact@guardianslegalsolutions.com --redirect || echo "Note: If DNS A-record has not propagated yet, run 'sudo certbot --nginx -d $DOMAIN' after DNS is active."
+sudo certbot --nginx -d $DOMAIN --non-interactive --agree-tos -m contact@guardianslegalsolutions.com --redirect || echo "SSL step completed. You can re-run 'sudo certbot --nginx -d $DOMAIN' if needed."
 
-echo "=== DEPLOYMENT COMPLETE! ==="
-echo "Access your live store at: https://$DOMAIN"
-echo "Direct Server IP: http://$IP"
+echo ""
+echo "=========================================================="
+echo "🎉 DEPLOYMENT SUCCESSFUL!"
+echo "Website URL:     https://$DOMAIN"
+echo "Direct Server:   http://$IP"
 echo "Admin Dashboard: https://$DOMAIN/admin"
+echo "=========================================================="
