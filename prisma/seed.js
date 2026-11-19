@@ -78,15 +78,15 @@ async function main() {
   // 3. Settings
   const settingsData = [
     { key: 'site_name', value: 'Radhey Radhey Girls Point', group: 'general' },
-    { key: 'tagline', value: 'Ethnic • Fusion • Casual • Festive', group: 'general' },
+    { key: 'tagline', value: 'Trendy • Ethnic • Daily Wear | Suits | Co-ords | Palazzo | Kurtis', group: 'general' },
     { key: 'contact_email', value: 'contact@radheygirlspoint.com', group: 'general' },
-    { key: 'contact_phone', value: '+91 98765 43210', group: 'general' },
-    { key: 'whatsapp_number', value: '919876543210', group: 'general' },
-    { key: 'store_address', value: 'Shop No. 12-14, Heritage Fashion Market, Pink City, Jaipur, Rajasthan 302002', group: 'general' },
+    { key: 'contact_phone', value: '+91 89507 29243', group: 'general' },
+    { key: 'whatsapp_number', value: '918950729243', group: 'general' },
+    { key: 'store_address', value: 'Near Sach Jewellers, Pul Teliyan, Hisar, Haryana', group: 'general' },
     { key: 'shipping_fee', value: '99', group: 'shipping' },
     { key: 'free_shipping_threshold', value: '999', group: 'shipping' },
     { key: 'return_window_days', value: '7', group: 'shipping' },
-    { key: 'announcement_bar', value: 'Free Shipping on Orders Above ₹999 | Easy 7-Day Returns | 100% Authentic Handcrafted Designs', group: 'general' },
+    { key: 'announcement_bar', value: 'Free Shipping on Orders Above ₹999 | Easy 7-Day Returns | Trendy • Ethnic • Daily Wear', group: 'general' },
     { key: 'instagram_handle', value: '@radheygirlspoint', group: 'social' },
     { key: 'facebook_handle', value: 'radheygirlspoint', group: 'social' },
   ];

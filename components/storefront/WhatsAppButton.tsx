@@ -4,9 +4,9 @@ import React from 'react';
 import { MessageCircle } from 'lucide-react';
 
 export default function WhatsAppButton() {
-  const whatsappNumber = '919876543210';
+  const whatsappNumber = '918950729243';
   const defaultMessage = encodeURIComponent(
-    'Hello Radhey Radhey Girls Point! I am looking for beautiful ethnic suits and dresses. Please help me with sizing and orders.'
+    'Hello Radhey Radhey Girls Point! I am looking for trendy & ethnic suits, kurtis, and co-ords. Please help me with sizing and orders.'
   );
 
   return (

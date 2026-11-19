@@ -54,9 +54,11 @@ export default function ShippingAndReturnsPage() {
             <h2>Damaged or Defective Deliveries</h2>
           </div>
           <p>
-            In the rare event that an item arrives damaged or flawed, please WhatsApp our support line at
-            +91 98765 43210 within 48 hours of delivery with photos of the parcel. We will immediately
-            dispatch an urgent free replacement.
+            In the rare event that an item arrives damaged or flawed, please WhatsApp our support line at{' '}
+            <a href="https://wa.me/918950729243" target="_blank" rel="noopener noreferrer" className="font-semibold underline">
+              +91 89507 29243
+            </a>{' '}
+            within 48 hours of delivery with photos of the parcel. We will immediately dispatch an urgent free replacement.
           </p>
         </div>
       </div>

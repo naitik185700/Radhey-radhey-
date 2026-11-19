@@ -20,8 +20,8 @@ export default function FAQPage() {
       a: 'Once your parcel is handed over to our courier partner (BlueDart or DTDC), an SMS and email with a live tracking link will be sent to your registered contact number. You can also track it under My Orders in your account.',
     },
     {
-      q: 'Can I order directly on WhatsApp?',
-      a: 'Yes! We have an instant WhatsApp ordering concierge (+91 98765 43210). Simply tap the WhatsApp button on any product page and our stylist will reserve your size and process your order.',
+      q: 'Can I order directly on WhatsApp or DM?',
+      a: 'Yes! We offer direct WhatsApp ordering (+91 89507 29243 / wa.me/918950729243). Simply tap the WhatsApp button on any design to DM our boutique stylist, confirm sizing, and process your order with Cash on Delivery or UPI.',
     },
   ];
 

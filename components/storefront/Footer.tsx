@@ -71,9 +71,8 @@ export default function Footer() {
               <Logo size="md" variant="light" href="/" />
             </div>
             <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed max-w-sm font-light">
-              Radhey Radhey Girls Point celebrates the timeless grace of Indian ethnic wear.
-              From regal Chanderi silk suit sets and ornate anarkalis to chic contemporary co-ord sets,
-              we design each piece to make you feel royal for every festive and daily occasion.
+              <span className="block text-white font-medium mb-1">✨ Trendy • Ethnic • Daily Wear</span>
+              Specializing in premium Suits, Co-ord sets, Palazzo suits, Kurtis, and festive ensembles. Visit our boutique near Sach Jewellers, Pul Teliyan, Hisar.
             </p>
             <div className="flex items-center gap-3 pt-2">
               <a
@@ -221,13 +220,15 @@ export default function Footer() {
             </form>
 
             <div className="mt-6 pt-4 border-t border-neutral-800 text-xs text-neutral-400 space-y-1.5">
-              <p className="flex items-center gap-2">
-                <MapPin className="w-3.5 h-3.5 text-neutral-500 flex-shrink-0" />
-                <span>Jaipur, Rajasthan 302002</span>
+              <p className="flex items-start gap-2">
+                <MapPin className="w-3.5 h-3.5 text-neutral-500 flex-shrink-0 mt-0.5" />
+                <span>Near Sach Jewellers, Pul Teliyan, Hisar, Haryana</span>
               </p>
               <p className="flex items-center gap-2">
                 <Phone className="w-3.5 h-3.5 text-neutral-500 flex-shrink-0" />
-                <span>+91 98765 43210</span>
+                <a href="https://wa.me/918950729243" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                  +91 89507 29243 (DM / WhatsApp)
+                </a>
               </p>
             </div>
           </div>

@@ -104,7 +104,7 @@ export default function AdminSettingsPage() {
               <label className="block font-semibold text-neutral-700 mb-1">Brand Tagline</label>
               <input
                 type="text"
-                value={settings.tagline || 'Ethnic • Fusion • Casual • Festive'}
+                value={settings.tagline || 'Trendy • Ethnic • Daily Wear | Suits | Co-ords | Palazzo | Kurtis'}
                 onChange={(e) => handleChange('tagline', e.target.value)}
                 className="w-full border border-neutral-300 rounded px-3 py-2 text-xs"
               />
@@ -114,9 +114,9 @@ export default function AdminSettingsPage() {
               <label className="block font-semibold text-neutral-700 mb-1">Official WhatsApp Number *</label>
               <input
                 type="text"
-                value={settings.whatsapp_number || '919876543210'}
+                value={settings.whatsapp_number || '918950729243'}
                 onChange={(e) => handleChange('whatsapp_number', e.target.value)}
-                placeholder="e.g. 919876543210 (Country code + 10 digits)"
+                placeholder="e.g. 918950729243 (Country code + 10 digits)"
                 className="w-full border border-neutral-300 rounded px-3 py-2 text-xs font-mono font-semibold"
               />
               <p className="text-[10px] text-neutral-400 mt-1">Used for 1-click WhatsApp customer concierge buttons</p>
@@ -136,7 +136,7 @@ export default function AdminSettingsPage() {
               <label className="block font-semibold text-neutral-700 mb-1">Boutique Physical Address</label>
               <input
                 type="text"
-                value={settings.store_address || 'Shop No. 12-14, Heritage Fashion Market, Pink City, Jaipur, Rajasthan 302002'}
+                value={settings.store_address || 'Near Sach Jewellers, Pul Teliyan, Hisar, Haryana'}
                 onChange={(e) => handleChange('store_address', e.target.value)}
                 className="w-full border border-neutral-300 rounded px-3 py-2 text-xs"
               />

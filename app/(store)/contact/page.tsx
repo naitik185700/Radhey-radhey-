@@ -39,24 +39,26 @@ export default function ContactPage() {
               <div className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-neutral-400 flex-shrink-0 mt-0.5" />
                 <div>
-                  <strong className="text-white block font-semibold mb-0.5">Address:</strong>
-                  <span>Shop No. 12-14, Heritage Fashion Market, Pink City, Jaipur, Rajasthan 302002</span>
+                  <strong className="text-white block font-semibold mb-0.5">Boutique Address:</strong>
+                  <span>Near Sach Jewellers, Pul Teliyan, Hisar, Haryana</span>
                 </div>
               </div>
 
               <div className="flex items-start gap-3">
                 <Phone className="w-5 h-5 text-neutral-400 flex-shrink-0 mt-0.5" />
                 <div>
-                  <strong className="text-white block font-semibold mb-0.5">Phone:</strong>
-                  <span>+91 98765 43210</span>
+                  <strong className="text-white block font-semibold mb-0.5">DM / WhatsApp Orders:</strong>
+                  <a href="https://wa.me/918950729243" target="_blank" rel="noopener noreferrer" className="text-emerald-400 hover:underline">
+                    +91 89507 29243 (wa.me/918950729243)
+                  </a>
                 </div>
               </div>
 
               <div className="flex items-start gap-3">
                 <Mail className="w-5 h-5 text-neutral-400 flex-shrink-0 mt-0.5" />
                 <div>
-                  <strong className="text-white block font-semibold mb-0.5">Email:</strong>
-                  <span>contact@radheygirlspoint.com</span>
+                  <strong className="text-white block font-semibold mb-0.5">Collections:</strong>
+                  <span>Suits | Co-ords | Palazzo | Kurtis | Daily & Festive Wear</span>
                 </div>
               </div>
 
@@ -64,20 +66,20 @@ export default function ContactPage() {
                 <Clock className="w-5 h-5 text-neutral-400 flex-shrink-0 mt-0.5" />
                 <div>
                   <strong className="text-white block font-semibold mb-0.5">Working Hours:</strong>
-                  <span>Monday - Saturday: 10:00 AM - 8:30 PM IST</span>
+                  <span>Monday - Sunday: 10:00 AM - 8:30 PM IST</span>
                 </div>
               </div>
             </div>
 
             <div className="pt-4 border-t border-neutral-800">
               <a
-                href="https://wa.me/919876543210?text=Hello%20Radhey%20Radhey%20Girls%20Point%2C%20I%20have%20an%20inquiry"
+                href="https://wa.me/918950729243?text=Hello%20Radhey%20Radhey%20Girls%20Point%2C%20I%20want%20to%20order"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full py-3 bg-[#25D366] hover:bg-[#20ba59] text-white text-xs font-bold uppercase tracking-wider rounded-md flex items-center justify-center gap-2 transition-colors"
               >
                 <MessageCircle className="w-4 h-4 fill-white text-[#25D366]" />
-                <span>Instant WhatsApp Concierge</span>
+                <span>Order Directly on WhatsApp</span>
               </a>
             </div>
           </div>
@@ -127,10 +129,10 @@ export default function ContactPage() {
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-neutral-700 mb-1">Phone Number</label>
+              <label className="block text-xs font-semibold text-neutral-700 mb-1">Phone / WhatsApp Number</label>
               <input
                 type="tel"
-                placeholder="+91 98765 43210"
+                placeholder="+91 89507 29243"
                 value={form.phone}
                 onChange={(e) => setForm({ ...form, phone: e.target.value })}
                 className="w-full border border-neutral-300 rounded px-3 py-2 text-xs focus:ring-1 focus:ring-black"

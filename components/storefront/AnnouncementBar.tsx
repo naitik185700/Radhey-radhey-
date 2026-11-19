@@ -28,13 +28,13 @@ export default function AnnouncementBar() {
         {/* Right: WhatsApp direct assistance */}
         <div className="hidden lg:flex items-center gap-2">
           <a
-            href="https://wa.me/919876543210?text=Hello%20Radhey%20Radhey%20Girls%20Point%2C%20I%20have%20an%20inquiry"
+            href="https://wa.me/918950729243?text=Hello%20Radhey%20Radhey%20Girls%20Point%2C%20I%20have%20an%20inquiry"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-1.5 text-neutral-300 hover:text-white transition-colors tracking-wide"
           >
             <MessageCircle className="w-3.5 h-3.5 text-green-400" />
-            <span>WhatsApp Support: +91 98765 43210</span>
+            <span>WhatsApp Orders: +91 89507 29243</span>
           </a>
         </div>
       </div>
